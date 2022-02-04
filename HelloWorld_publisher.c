@@ -135,6 +135,31 @@ publisher_main_w_args(
         goto done;
     }
 
+#ifdef USE_ADMINCONSOLE
+    // assert the remote reader of Admin Console... this is the DataReader that
+    // is created when the user subscribes to the "Example HelloWorld" Topic 
+    // from Admin Console
+    rem_subscription_data.key.value[DDS_BUILTIN_TOPIC_KEY_OBJECT_ID] = k_OBJ_ID_ADMINCONSOLE_DR01;
+    rem_subscription_data.topic_name = DDS_String_dup(application->topic_name);
+    rem_subscription_data.type_name = DDS_String_dup(application->type_name);
+
+    #ifdef USE_RELIABLE_QOS
+    rem_subscription_data.reliability.kind = DDS_RELIABLE_RELIABILITY_QOS;
+    #else
+    rem_subscription_data.reliability.kind  = DDS_BEST_EFFORT_RELIABILITY_QOS;
+    #endif
+    
+    if (DDS_RETCODE_OK != DPSE_RemoteSubscription_assert(
+        application->participant,
+        k_PARTICIPANT_ADMINCONSOLE_NAME, // Admin Console's participant name
+        &rem_subscription_data,
+        HelloWorld_get_key_kind(HelloWorldTypePlugin_get(), NULL)))
+    {
+        printf("failed to assert remote subscription (Admin Console)\n");
+        goto done;
+    }
+#endif
+
     hw_datawriter = HelloWorldDataWriter_narrow(datawriter);
 
     #ifdef RTI_CERT

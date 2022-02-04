@@ -263,6 +263,22 @@ Application_create(
         goto done;
     }
 
+#ifdef USE_ADMINCONSOLE
+    // If the calling application is the publisher, we need to assert the remote
+    // DomainParticipant of Admin Console. In this example, the subscriber does 
+    // not need to discover Admin Console so we don't assert in that case.
+    if (strncmp(local_participant_name, "publisher", 9) == 0) {
+        retcode = DPSE_RemoteParticipant_assert(
+            application->participant,
+            k_PARTICIPANT_ADMINCONSOLE_NAME);
+        if (retcode != DDS_RETCODE_OK)
+        {
+            printf("failed to assert remote participant\n");
+            goto done;
+        }
+    }
+#endif
+
     success = DDS_BOOLEAN_TRUE;
 
     done:

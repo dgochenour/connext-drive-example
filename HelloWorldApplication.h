@@ -62,5 +62,17 @@ extern void
 Application_delete(struct Application *application);
 
 #endif
+
+// define to control assertions related to Admin Console
+#define USE_ADMINCONSOLE
+
+// contants for Admin Console
+// 
+// Note that the participant name must match what Admin Console is announcing, 
+// and k_OBJ_ID_ADMINCONSOLE_DR01 defines the RTPS object ID we are expecting
+// Admin Console's "Example HelloWorld" Topic DataReader to have.
+static const char *k_PARTICIPANT_ADMINCONSOLE_NAME  = "Data Visualization";
+static const int k_OBJ_ID_ADMINCONSOLE_DR01         = 300;
+
 #endif
 
