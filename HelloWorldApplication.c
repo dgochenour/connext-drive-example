@@ -267,7 +267,7 @@ Application_create(
     // If the calling application is the publisher, we need to assert the remote
     // DomainParticipant of Admin Console. In this example, the subscriber does 
     // not need to discover Admin Console so we don't assert in that case.
-    if (strncmp((const char *)application->participant, "publisher", 9) == 0) {
+    if (strncmp(local_participant_name, "publisher", 9) == 0) {
         retcode = DPSE_RemoteParticipant_assert(
             application->participant,
             k_PARTICIPANT_ADMINCONSOLE_NAME);

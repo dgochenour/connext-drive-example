@@ -30,14 +30,14 @@ The following assumptions are made:
 
 After the build completes, the executables can be found in the `objs/x64Linux4gcc7.3.0_certprofile` directory.
 
-## Running example_publisher and example_subscriber
+## Running HelloWorld_publisher and HelloWorld_subscriber in Domain 100
 
 Open 2 terminal sessions. Start the publisher in one terminal and the subscriber in the second. 
 
-    $ ./objs/x64Linux4gcc7.3.0_certprofile/HelloWorld_publisher 
+    $ ./objs/x64Linux4gcc7.3.0_certprofile/HelloWorld_publisher -domain 100
     
 Run the second subscriber in another terminal with the command:
 
-    $ ./objs/x64Linux4gcc7.3.0_certprofile/HelloWorld_subscriber  
+    $ ./objs/x64Linux4gcc7.3.0_certprofile/HelloWorld_subscriber -domain 100 
 
 
