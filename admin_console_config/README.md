@@ -54,3 +54,19 @@ After starting Admin Console, open the preferences dialog from "View-->Preferenc
 ![set_qos](img/set_qos.png)
 
 At this point, Admin Console should visualize the `HelloWorld_publisher` and `HelloWorld_subscriber` applications when they are run.
+
+## Subscribing To The "Example HelloWorld" Topic From Admin Console
+
+1. Select the "Example HelloWorld" Topic in Admin Console's "DDS Logical View" pane.
+2. Select the "Topic Data" tab at the bottom of the Topic pane in the center of the screen.
+3. Click the **Subscribe** button at the top of the "Topic Data" pane-- this will open a new pop-up dialog box.
+![subscribe1](img/subscribe1.png)
+4. Choose the `connext-drive-example/admin_console_config/HelloWorld.xml` file.
+5. Expand the "Advanced Settings" section perform the following actions: 
+  - Chose `MyLibrary::MicroDataVisualization` under "Select QoS Profile"
+  - set Reliability to `Reliable`
+  - Click **OK**
+
+![subscribe2](img/subscribe2.png)
+
+**Data from HelloWorld_publisher should become visible in Admin Console**
